@@ -1,66 +1,55 @@
-## Foundry
+# OurToken ERC-20 Token 🪙
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This repository contains the implementation of **OurToken (OT)**, a custom ERC-20 token built using the OpenZeppelin library. It uses **Foundry** for deployment and testing.
 
-Foundry consists of:
+---
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Features 🚀
+- **ERC-20 Standard Token**: Implements a fungible token with `name` as **OurToken** and `symbol` as **OT**.
+- **Initial Supply**: The token mints the total supply to the deployer's address upon deployment.
+- **Test Suite**: Includes unit tests for token balances, allowances, and transfers.
 
-## Documentation
+---
 
-https://book.getfoundry.sh/
+## How to Use 🛠️
 
-## Usage
+### Deployment
+The deployment script is located at `script/DeployOurToken.s.sol`. It deploys the token with an initial supply.
 
-### Build
+### Steps to Deploy:
+1. **Install Foundry** (if not already installed):
+   ```bash
+   curl -L https://foundry.paradigm.xyz | bash
+   foundryup
+    ```
 
-```shell
-$ forge build
+2. **Clone the repository**:
+```bash
+git clone https://github.com/your-username/OurToken.git
+cd OurToken
+```
+3. **Install dependencies**:
+```bash
+forge install
+```
+4. **Deploy the contract**:
+```bash
+forge script script/DeployOurToken.s.sol:DeployOurToken --rpc-url <YOUR_RPC_URL> --broadcast
+```
+## Testing 🧪
+This project includes comprehensive tests located in the test directory. The tests check:
+
+1. Token balances for users.
+2. Allowance functionality (e.g., approvals and transfers via a third party).
+
+### Run the Tests:
+```bash
+Copy code
+forge test
 ```
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+Use the -vvvv flag for detailed logs:
+```bash
+Copy code
+forge test -vvvv
 ```
